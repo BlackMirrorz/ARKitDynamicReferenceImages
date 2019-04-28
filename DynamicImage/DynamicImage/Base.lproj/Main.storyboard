@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="DynamicImage" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uiK-Tv-qbG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </arscnView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrw-wD-P54">
+                                <rect key="frame" x="8" y="792" width="398" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0cc-IA-9Is"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                                <state key="normal" title="Download Images">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="generateImagesFromServer" destination="BYZ-38-t0r" eventType="touchUpInside" id="3R4-3b-RXr"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="BW9-9W-rxc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="180"/>
+                                <subviews>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vSc-nw-nZm" userLabel="Loading View">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="CRt-96-rfg">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="EDb-xG-GGP">
+                                                    <rect key="frame" x="188.5" y="8" width="37" height="37"/>
+                                                </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Downloading Images" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pac-dA-pZF">
+                                                    <rect key="frame" x="133" y="53" width="148.5" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="zPg-0e-zmj"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Pac-dA-pZF" firstAttribute="top" secondItem="EDb-xG-GGP" secondAttribute="bottom" constant="8" id="1d6-fd-A5q"/>
+                                                <constraint firstItem="EDb-xG-GGP" firstAttribute="top" secondItem="CRt-96-rfg" secondAttribute="top" constant="8" id="Yiq-Ag-uAW"/>
+                                                <constraint firstItem="EDb-xG-GGP" firstAttribute="centerX" secondItem="CRt-96-rfg" secondAttribute="centerX" id="Yyr-Gf-BpW"/>
+                                                <constraint firstItem="Pac-dA-pZF" firstAttribute="centerX" secondItem="CRt-96-rfg" secondAttribute="centerX" id="bkj-bb-Yet"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="AWf-yW-u4N"/>
+                                        </constraints>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                    <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UfM-CI-uVu" userLabel="Loading View">
+                                        <rect key="frame" x="0.0" y="90" width="414" height="90"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9Ou-yW-gg0">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image Detected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5mI-tc-4tp">
+                                                    <rect key="frame" x="150.5" y="30" width="113" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="9DB-Kg-5we"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="5mI-tc-4tp" firstAttribute="centerX" secondItem="9Ou-yW-gg0" secondAttribute="centerX" id="jwn-SS-yo3"/>
+                                                <constraint firstItem="5mI-tc-4tp" firstAttribute="centerY" secondItem="9Ou-yW-gg0" secondAttribute="centerY" id="peD-pM-QDI"/>
+                                            </constraints>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="90" id="e6W-Jc-RXh"/>
+                                        </constraints>
+                                        <blurEffect style="dark"/>
+                                    </visualEffectView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uiK-Tv-qbG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="8rM-K7-5I9"/>
+                            <constraint firstItem="uiK-Tv-qbG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="9Jb-kb-o9g"/>
+                            <constraint firstItem="BW9-9W-rxc" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="B9J-lE-CXF"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vrw-wD-P54" secondAttribute="bottom" constant="20" id="GvQ-Ej-GQO"/>
+                            <constraint firstItem="vrw-wD-P54" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="Mwg-rW-UFI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="uiK-Tv-qbG" secondAttribute="bottom" id="Mxc-ce-hun"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vrw-wD-P54" secondAttribute="trailing" constant="8" id="Pqs-wj-IjC"/>
+                            <constraint firstItem="BW9-9W-rxc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="bmy-4w-zGg"/>
+                            <constraint firstItem="BW9-9W-rxc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gxc-w5-DQq"/>
+                            <constraint firstAttribute="trailing" secondItem="uiK-Tv-qbG" secondAttribute="trailing" id="yd2-Tq-aQL"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="augmentedRealityView" destination="uiK-Tv-qbG" id="Rg3-3E-07p"/>
+                        <outlet property="contentStackView" destination="BW9-9W-rxc" id="igR-L2-B05"/>
+                        <outlet property="downloadButton" destination="vrw-wD-P54" id="tcb-uE-T6b"/>
+                        <outlet property="downloadLabel" destination="Pac-dA-pZF" id="102-l5-ThL"/>
+                        <outlet property="downloadSpinner" destination="EDb-xG-GGP" id="q1r-qY-mvY"/>
+                        <outlet property="trackingLabel" destination="5mI-tc-4tp" id="Go6-dM-Gma"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+        </scene>
+    </scenes>
+</document>
