@@ -93,7 +93,7 @@ class ViewController: UIViewController {
         self.augmentedRealityConfiguration.maximumNumberOfTrackedImages = 10
         self.augmentedRealityConfiguration.trackingImages = dynamicConent
         self.augmentedRealitySession.run(self.augmentedRealityConfiguration, options: [.resetTracking, .removeExistingAnchors])
-        self.startARSession()
+        
         
         DispatchQueue.main.async {
           
