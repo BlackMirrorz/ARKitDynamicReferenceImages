@@ -37,7 +37,7 @@ struct ReferenceImagePayload{
   var name: String
   var extensionType: String
   var orientation: CGImagePropertyOrientation
-  var widthInM: CGFloat = 0.1
+  var widthInM: CGFloat
   
 }
 
