@@ -15,7 +15,7 @@ import ARKit
 //-------------------
 
 enum FileSuffix {
- 
+  
   case JPEG, PNG
   
   /// The Type Of Extension
@@ -38,7 +38,7 @@ struct ReferenceImagePayload{
   var extensionType: String
   var orientation: CGImagePropertyOrientation
   var widthInM: CGFloat = 0.1
-
+  
 }
 
 class ImageDownloader{
@@ -57,40 +57,43 @@ class ImageDownloader{
   
   static var receivedImageData = [ImageData]()
   
+  //----------------------
+  //MARK:- Operation Queue
+  //----------------------
   
   /// Downloads Images From A Specified Server And If Succesful Converts Them To A Set Of ARReferenceImages
   ///
   /// - Parameter completion: (Result<[UIImage], Error>)
   class func downloadImagesFromPaths(_ completion: @escaping completionHandler) {
-  
+    
     let operationQueue = OperationQueue()
-   
+    
     operationQueue.maxConcurrentOperationCount = 6
     
     let completionOperation = BlockOperation {
       
       OperationQueue.main.addOperation({
-      
-       completion(.success(referenceImageFrom(receivedImageData)))
+        
+        completion(.success(referenceImageFrom(receivedImageData)))
         
       })
     }
- 
+    
     payloadData.forEach { (payload) in
       
       guard let url = URL(string: BASE_PATH + payload.name + payload.extensionType) else { return }
-
+      
       let operation = BlockOperation(block: {
         
         do{
-         
+          
           let imageData = try Data(contentsOf: url)
           
           if let image = UIImage(data: imageData){
             
-             receivedImageData.append(ImageData(image, payload.orientation, payload.widthInM, payload.name))
+            receivedImageData.append(ImageData(image, payload.orientation, payload.widthInM, payload.name))
           }
-         
+          
         }catch{
           
           completion(.failure(error))
@@ -104,8 +107,12 @@ class ImageDownloader{
     
     operationQueue.addOperations(completionOperation.dependencies, waitUntilFinished: false)
     operationQueue.addOperation(completionOperation)
- 
+    
   }
+  
+  //-------------------------------------
+  //MARK:- Dynamic ARReference Generation
+  //-------------------------------------
   
   /// Creates A Set Of <ARReferenceImage> From An Array Of [ImageData]
   ///
